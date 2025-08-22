@@ -1,0 +1,324 @@
+/* --- Google Font Imports (from original HTML) --- */
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Segoe+UI&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inter&display=swap');
+
+/* --- CSS Variables --- */
+:root {
+    --primary-bg: #000000;
+    --text-light: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --card-bg: #ffffff;
+    --text-dark: #000000;
+    --highlight-red: #d9534f;
+    --gradient-purple: #bc7bdf;
+    --gradient-blue: #68d6ec;
+}
+
+/* --- General Styles & Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* --- Header & Navigation (with Sliding Capsule) --- */
+/* --- Header & Navigation (Classic Layout with Sliding Capsule) --- */
+.site-header {
+    background: none;
+    padding: 2rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    position: relative; /* Crucial for positioning the capsule */
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+}
+
+/* This is the moving white capsule */
+/* --- New Thicker Version --- */
+.nav-links .nav-capsule {
+    position: absolute;
+    height: calc(100% + 8px); /* Makes the capsule taller */
+    top: -4px;                  /* Re-centers the taller capsule */
+    background-color: var(--text-light);
+    border-radius: 50px;
+    transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1;
+}
+
+.nav-links li {
+    margin: 0;
+    z-index: 2; /* Ensures links are on top of the capsule */
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: color 0.4s ease;
+}
+
+/* When the capsule is behind a link, the JS makes its text black */
+.nav-links a.active {
+    color: var(--primary-bg);
+}
+
+
+/* --- Hero Section --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: url('../images/v101_58.png') no-repeat center center; */ /* Using Atomic Habits as an example */
+    background-size: cover;
+    filter: blur(5px);
+    opacity: 0.2;
+    z-index: -2;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,1));
+    z-index: -1;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 1rem auto 2rem;
+}
+
+.cta-button {
+    background-color: var(--text-light);
+    color: var(--text-dark);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+.arrow-icon {
+    margin-left: 10px;
+}
+
+/* --- Discover Section --- */
+.discover-section {
+    padding: 80px 0;
+    background-image: linear-gradient(rgba(0,0,0,1), rgba(15, 1, 23, 1));
+}
+.discover-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+.problem-text {
+    flex: 2;
+}
+.problem-text h2 {
+    font-size: 2.5rem;
+}
+.question-mark {
+    font-size: 15rem;
+    font-weight: bold;
+    color: var(--text-light);
+    flex: 1;
+    text-align: center;
+}
+
+.discover-cta {
+    text-align: center;
+    margin-top: 60px;
+}
+.discover-title {
+    font-size: 3rem;
+    background: -webkit-linear-gradient(var(--gradient-purple), var(--gradient-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.discover-cta p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 1rem auto;
+    color: var(--text-secondary);
+}
+
+
+/* --- Features Section --- */
+.features-section {
+    padding: 80px 0;
+    background-image: url('../images/grid-background.png'); /* You might need to create a subtle grid image */
+    background-color: #1a1a1a;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.feature-card {
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.feature-card .icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    color: var(--highlight-red);
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+}
+
+/* --- Footer --- */
+.site-footer-main {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 60px 0 20px 0;
+    text-align: center;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+.footer-column {
+    flex: 1;
+}
+.footer-column h2 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+.footer-column ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.contact-section h3 {
+    font-size: 2.5rem;
+}
+.contact-section a {
+    color: var(--text-dark);
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+.contact-section a:hover {
+    text-decoration: underline;
+}
+.copyright {
+    border-top: 1px solid #ddd;
+    margin-top: 40px;
+    padding-top: 20px;
+    font-size: 0.9rem;
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Simple hiding for demo; a full solution would use a hamburger menu */
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    .discover-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-column ul {
+        list-style-position: inside;
+    }
+}
