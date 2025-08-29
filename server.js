@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
-app.use(express.static('public')); // Serve static files
+app.use(express.static(__dirname + '/public')); // Serve static files from the 'public' directory
 
 // Validate environment variables
 const requiredEnvVars = ['GROQ_API_KEY', 'SUPABASE_URL', 'SUPABASE_KEY'];
