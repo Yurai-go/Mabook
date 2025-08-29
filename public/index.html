@@ -16,7 +16,6 @@
         <nav class="main-nav">
             <div class="logo">MaBook</div>
             <ul class="nav-links">
-    <li class="nav-capsule"></li>
     <li><a href="#home" class="active">Home</a></li>
     <li><a href="#discover">Discover</a></li>
     <li><a href="#goals">Goals</a></li>
@@ -101,35 +100,5 @@
             <p>Mabook. All Rights Reserved.</p>
         </div>
     </footer>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const navLinks = document.querySelectorAll('.nav-links a');
-        const capsule = document.querySelector('.nav-links .nav-capsule');
-        const activeLink = document.querySelector('.nav-links a.active');
-
-        // Function to move the capsule
-        function moveCapsule(target) {
-            // Update capsule position and size
-            capsule.style.width = `${target.offsetWidth}px`;
-            capsule.style.left = `${target.offsetLeft}px`;
-
-            // Update active class for text color
-            navLinks.forEach(link => link.classList.remove('active'));
-            target.classList.add('active');
-        }
-
-        // Initial position on page load
-        if (activeLink) {
-            moveCapsule(activeLink);
-        }
-
-        // Add click listeners to all nav links
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                moveCapsule(e.target);
-            });
-        });
-    });
-</script>
 </body>
 </html>
