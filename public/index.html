@@ -11,98 +11,32 @@
 </head>
 <body>
 
-    <header class="site-header">
-    <div class="container">
-        <nav class="main-nav">
-            <div class="logo">MaBook</div>
-            <ul class="nav-links">
-    <li class="nav-capsule"></li>
-    <li><a href="#home" class="active">Home</a></li>
-    <li><a href="#discover">Discover</a></li>
-    <li><a href="#goals">Goals</a></li>
-</ul>
-        </nav>
-    </div>
-</header>
+    <div id="navbar-container"></div>
 
     <main>
-        <section id="home" class="hero">
-            <div class="hero-background"></div>
-            <div class="hero-content">
-                <h1>Smart Book Recommendation System</h1>
-                <p>AI-Powered Book Discovery That Solves Your Problems, Not Someone Else’s Opinions</p>
-                <a href="prompt.html"><button class="cta-button">Try Now <span class="arrow-icon">►</span></button></a>
-            </div>
-        </section>
-
-        <section id="discover" class="discover-section">
-            <div class="container discover-container">
-                <div class="problem-text">
-                    <h2>A problem we observe:</h2>
-                    <p>Have you ever picked up a book that was praised everywhere, only to discover that it did not meet your expectations? Even after exploring numerous titles, you may find that only a few truly deliver the quality and insight you seek. Are you one of those readers?</p>
-                </div>
-                <div class="question-mark">?</div>
-            </div>
-            <div class="container discover-cta">
-                <h2 class="discover-title">Discover Your Perfect Book</h2>
-                <p>Share what you're interested in, what challenges you're facing, or what goals you want to achieve. Our AI will recommend the perfect books for you.</p>
-            </div>
-        </section>
-
-        <section id="features" class="features-section">
-            <div class="container">
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="icon">⚡️</div>
-                        <h3>Our service is speedy.</h3>
-                        <p>We provide you a fast-paced system so you will stay engaged. With this, interest is sustainable.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="icon">👤</div>
-                        <h3>Better personalization experience.</h3>
-                        <p>Instead of shoving “Top 10 Bestsellers” down everyone’s throat, the system listens to what the user actually likes or dislikes.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="icon">⭐</div>
-                        <h3>We prioritize quality.</h3>
-                        <p>Our database consist of books that has been verified and reviewed by professionals around the world.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="icon">💡</div>
-                        <h3>We give appropriate book highlights.</h3>
-                        <p>Interest-matched suggestions supports reading habit alive.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div id="hero-container"></div>
+        <div id="library-container"></div>
     </main>
 
-    <footer id="goals" class="site-footer-main">
-        <div class="container footer-container">
-            <div class="footer-column">
-                <h2>OUR GOALS:</h2>
-                <ul>
-                    <li>To help people finds information by intersecting them with relevant sources.</li>
-                    <li>Building the pillar foundation of book-reading habit.</li>
-                    <li>Promote books by its ideas instead of by popularity.</li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h2>OBJECTIVE</h2>
-                <p>Develop a website where people can discover the beauty of books, helping authors and people to improve in the world of literacy.</p>
-            </div>
-        </div>
-        <div class="container contact-section">
-            <h3>Something wrong?</h3>
-            <p>send your discomposure, concerns and feedback to this email:</p>
-            <a href="mailto:mabook.official@gmail.com">mabook.official@gmail.com</a>
-        </div>
-        <div class="copyright">
-            <p>Mabook. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <div id="footer-container"></div>
+
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    // Function to fetch and insert HTML content
+    const loadComponent = (url, elementId) => {
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(elementId).innerHTML = data;
+                // Re-initialize the navigation script after loading the navbar
+                if (elementId === 'navbar-container') {
+                    initializeNavbar();
+                }
+            })
+            .catch(error => console.error('Error loading component:', error));
+    };
+
+    // Function to initialize the navbar script
+    const initializeNavbar = () => {
         const navLinks = document.querySelectorAll('.nav-links a');
         const capsule = document.querySelector('.nav-links .nav-capsule');
         const activeLink = document.querySelector('.nav-links a.active');
@@ -129,6 +63,15 @@
                 moveCapsule(e.target);
             });
         });
+    };
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Load the components into their containers
+        loadComponent('navbar.html', 'navbar-container');
+        loadComponent('hero.html', 'hero-container');
+        loadComponent('library.html', 'library-container');
+        loadComponent('footer.html', 'footer-container');
     });
 </script>
 </body>
